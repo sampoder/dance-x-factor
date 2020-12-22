@@ -4,6 +4,11 @@
 // prints "hi" in the browser's dev tools console
 console.log("hi");
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+  
+
 let START_TIME;
 
 let CURRENT_TIME;
@@ -84,8 +89,20 @@ async function loop(timestamp) {
     TIMER_RUNNING = false;
     console.log(TOTAL_BAD / TOTAL * 100)
     console.log(TOTAL_GOOD / TOTAL * 100)
-    document.getElementById("start").style.display = "block";
     document.getElementById("main").style.display = "none";
+    if(TOTAL_BAD / TOTAL * 100 > TOTAL_GOOD / TOTAL * 100){
+        document.getElementById("lost").style.display = "block";
+        await sleep(2000);
+        document.getElementById("lost").style.display = "none";
+        document.getElementById("start").style.display = "block";
+    }
+    else{
+        document.getElementById("victory").style.display = "block";
+        await sleep(2000);
+        document.getElementById("victory").style.display = "none";
+        document.getElementById("start").style.display = "block";
+    }
+    
   }
   webcam.update(); // update the webcam frame
   await predict();
