@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Hello!</title>
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <script src="/script.js" defer></script>
+  </head>
+  <body>
+    <div class="container" id="start">
+      <div class="row">
+        <div class="col-12" style="text-align: center">
+          <div
+            style="
+              
+            "
+
+          >
+            <h1
+              style="
+                font-size: 7em;
+                margin-block-start: 0em;
+                margin-block-end: 0em;
+                text-align: center;
+              "
+            >
+              Click to start
+            </h1>
+          </div>
+          <!--<button type="button" onclick="init()">Start</button>-->
+          <!--<h1>Get dancing! The judges are watching...</h1>-->
+          <div id="label-container" style="color: #ad2c0a"></div>
+          <button disabled id="start-button" onclick="startTheClock()">Start Time</button>
+        </div>
+        
+      </div>
+    </div>
+    <div class="container" id="main" style="display: none;">
+      <div class="row">
+        <div class="col-6" style="text-align: center">
+          <div
+            style="
+              margin: 0;
+              position: absolute;
+              top: 50%;
+              -ms-transform: translateY(-50%);
+              transform: translateY(-50%);
+            "
+          >
+            <h1
+              id="time-title"
+              style="
+                font-size: 27em;
+                margin-block-start: 0em;
+                margin-block-end: 0em;
+                text-align: center;
+              "
+            >
+              30
+            </h1>
+          </div>
+          <!--<button type="button" onclick="init()">Start</button>-->
+          <!--<h1>Get dancing! The judges are watching...</h1>-->
+          <div id="label-container" style="color: #ad2c0a"></div>
+        </div>
+        <div class="col-6">
+          <div><canvas style="border-radius: 20px" id="canvas"></canvas></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+  </body>
+</html>
