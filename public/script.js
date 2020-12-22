@@ -3,11 +3,12 @@
 
 // prints "hi" in the browser's dev tools console
 console.log("hi");
+var socket = io();
 
 function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-  
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 
 let START_TIME;
 
@@ -66,11 +67,11 @@ function startTheClock() {
 }
 
 function sanitise(x) {
-    if (isNaN(x) && typeof x == 'undefined') {
-      return 0;
-    }
-    return x;
+  if (isNaN(x) && typeof x == 'undefined') {
+    return 0;
   }
+  return x;
+}
 
 async function loop(timestamp) {
   document.getElementById("start-button").disabled = false;
@@ -90,19 +91,19 @@ async function loop(timestamp) {
     console.log(TOTAL_BAD / TOTAL * 100)
     console.log(TOTAL_GOOD / TOTAL * 100)
     document.getElementById("main").style.display = "none";
-    if(TOTAL_BAD / TOTAL * 100 > TOTAL_GOOD / TOTAL * 100){
-        document.getElementById("lost").style.display = "block";
-        await sleep(2000);
-        document.getElementById("lost").style.display = "none";
-        document.getElementById("start").style.display = "block";
+    if (TOTAL_BAD / TOTAL * 100 > TOTAL_GOOD / TOTAL * 100) {
+      document.getElementById("lost").style.display = "block";
+      await sleep(6000);
+      document.getElementById("lost").style.display = "none";
+      document.getElementById("start").style.display = "block";
     }
-    else{
-        document.getElementById("victory").style.display = "block";
-        await sleep(2000);
-        document.getElementById("victory").style.display = "none";
-        document.getElementById("start").style.display = "block";
+    else {
+      document.getElementById("victory").style.display = "block";
+      await sleep(6000);
+      document.getElementById("victory").style.display = "none";
+      document.getElementById("start").style.display = "block";
     }
-    
+
   }
   webcam.update(); // update the webcam frame
   await predict();
@@ -120,7 +121,7 @@ async function predict() {
     var classPrediction =
       prediction[i].className + ": " + prediction[i].probability.toFixed(2);
     labelContainer.childNodes[i].innerHTML = classPrediction;
-    
+
   }
   COUNTING = true
   // finally draw the poses
@@ -138,5 +139,9 @@ function drawPose(pose) {
     }
   }
 }
+
+socket.on("start", function(msg) {
+  startTheClock()
+});
 
 init();

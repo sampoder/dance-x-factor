@@ -1,39 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Hello!</title>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<script src="/socket.io/socket.io.js">
+	</script>
+	<title>X-Factor Dancing</title>
 
-    <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/style.css" />
+	<!-- import the webpage's stylesheet -->
+	<link rel="stylesheet" href="/style.css" />
 
-    <script src="/script.js" defer></script>
-  </head>
-  <body>
-    <div class="container" id="start">
-      <div class="row">
-        <div class="col-12" style="text-align: center">
-          <div style="">
-            <h1
-              style="
+	<script src="/script.js" defer>
+	</script>
+</head>
+
+<body>
+	<div class="container" id="start">
+		<div class="row">
+			<div class="col-12" style="text-align: center">
+				<div style="">
+          <img
+              src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://dance1.innovweek.co/trigger"
+              height="300px"
+              
+              style="border-radius: 20px; border: 12px solid white"
+            />
+					<h1 style="
                 font-size: 7em;
-                margin-block-start: 0em;
+                margin-block-start: 0.3em;
                 margin-block-end: 0em;
                 text-align: center;
-              "
-            >
-              Click to start
-            </h1>
-          </div>
-          <!--<button type="button" onclick="init()">Start</button>-->
-          <!--<h1>Get dancing! The judges are watching...</h1>-->
-          <div id="label-container" style="color: #ad2c0a"></div>
-          <button disabled id="start-button" onclick="startTheClock()">
+              ">
+						X-Factor Dancing
+					</h1>
+          <h2>Scan the QR code, dance your best, then let the judges decide.</h2>
+				</div>
+				<button type="button" style="display: none;" id ="start-button" onclick="init()">Start</button>
+				<!--<h1>Get dancing! The judges are watching...</h1>-->
+				<div id="label-container" style="color: #ad2c0a"></div>
+				<!--<button disabled id="start-button" onclick="startTheClock()">
             Start Time
-          </button>
+          </button>-->
     
         </div>
       </div>
@@ -87,7 +96,7 @@
               height="500px"
               
               style="border-radius: 20px"
-              id="canvas"
+       
             />
             
           </div>
@@ -114,7 +123,7 @@
               height="500px"
               
               style="border-radius: 20px"
-              id="canvas"
+         
             />
           </div>
           <!--<button type="button" onclick="init()">Start</button>-->
